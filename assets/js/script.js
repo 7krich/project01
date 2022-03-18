@@ -3,31 +3,36 @@
 var userInputEl = document.querySelector("#search");
 var userFormEl = document.querySelector("#user-input-container")
 var userSearchEl = document.querySelector("#user-search-button")
-const appId = "c2854cdb";
-const appKey = "0313cdf2d19bedadc25217aefd97971f";
+// const appId = "c2854cdb";
+// const appKey = "0313cdf2d19bedadc25217aefd97971f";
+
+// EVENT LISTENERS
+userFormEl.addEventListener("submit", formSubmitHandler);
 
 // HANDLE SUBMIT EVENT
-// function formSubmitHandler(event) {
-//     // prevent page from refreshing
-//     event.preventDefault();
+function formSubmitHandler(event) {
+    // prevent page from refreshing
+    event.preventDefault();
 
-//     // get value form input element
-//     var cuisine = userInputEl.value;
+    // get value form input element
+    var foodType = userInputEl.value;
 
-//     if (cuisine) {
-//         getRecipe(cuisine);
-//         //addToSearchHistory();
+    if (foodType) {
+        getRecipe(foodType);
+        //addToSearchHistory();
 
-//         // clear old content
-//         userInputEl.value = "";
-//     } else {
-//         alert("Please enter a city");
-//     }
-// };
+        // clear old content
+        userInputEl.value = "";
+    } else {
+
+        // THIS NEEDS TO BE A MODAL
+        alert("Please enter food type");
+    }
+};
 
 // GET RECIPE INFO
-//function getRecipe() {
-    var apiUrl = `https://themealdb.com/api/json/v1/1/filter.php?c=Seafood`;
+function getRecipe(strCategory) {
+    var apiUrl = "https://themealdb.com/api/json/v1/1/search.php?s=" + strCategory;
 
     // make get request to URL
     fetch(apiUrl)
@@ -45,35 +50,10 @@ const appKey = "0313cdf2d19bedadc25217aefd97971f";
             alert("Error: " + response.statusText);
         }
     })
-//     // provide user info if server can't be reached
-//     .catch(function(error) {
-//         alert("Unable to connect to Server");
-//     });
-// };
-
-// EVENT LISTENERS
-//userFormEl.addEventListener("submit", formSubmitHandler);
+    // provide user info if server can't be reached
+    .catch(function(error) {
+        alert("Unable to connect to Server");
+    });
+};
 
 
-    // var apiUrl = `https://cooking-recipe2.p.rapidapi.com/getbycat/Indian%20Desserts?X-RapidAPI-Key`;
-
-    // // make get request to URL
-    // fetch(apiUrl)
-    // .then(function(response) {
-    //     // request was successful
-    //     if (response.ok) {
-    //         // display current day in header
-    //         response.json()
-    //         .then(function(data) {
-    //             console.log(data);
-    //             //displayRecipe(data);
-    //         });
-    //         // response recieved but error with request
-    //     } else {
-    //         alert("Error: " + response.statusText);
-    //     }
-    // })
-    // // provide user info if server can't be reached
-    // .catch(function(error) {
-    //     alert("Unable to connect to Server");
-    // });
