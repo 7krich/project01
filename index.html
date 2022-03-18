@@ -26,12 +26,12 @@
 
             <!-- CONTAINER FOR USER SELECTED RECIPE BUTTON -->
             <div id="user-selected">
-                <button id="tell-us-button"></button>
+                <button id="tell-us-button">Tell Us What You Want</button>
             </div>
 
             <!-- CONTAINER FOR RANDOM SELECTED RECIPE BUTTON -->
             <div id="random-selection">
-                <button id="random-button"></button>
+                <button id="random-button">I don't know what I want, Help me!</button>
             </div>
         </div>
 
@@ -46,7 +46,13 @@
         </div>
         
         <!-- USER INPUT FOR FOOD TYPE SELECTION -->
-        <form id="user-input"></form>
+        <div id="user-input-container">
+
+            <input name="user-input" id="search" type="text" autofocus="true" class="form-input" />
+
+        </div>
+            <button id="user-search-button">Search</button>
+
 
         <!-- CONTAINER FOR BOTH RECIPE AND SONG -->
         <div id="user-selected-results">
@@ -95,6 +101,6 @@
         
     </footer>
     
-    <script src="/assets/js/script.js"></script>
+    <script src="./assets/js/script.js"></script>
 </body>
 </html>
