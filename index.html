@@ -4,13 +4,16 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Le Festin</title>
 </head>
 <body>
 
     <!-- DIV CONTAINING TITLE ON THE PAGE -->
     <div id="title-container">
-        <h1>Website Title</h1>
+        <h1>Le Festin</h1>
+        <p>Le Festin isn't just a recipe generator, it's a whole mood. It's the complete experience of pairing
+            a dinner recipe with a curated song list to match eardrums to paletes. We're not just the answer to dinner, 
+            we're an entire experience.</p>
     </div>
 
     <!-- 1ST MAIN SECTION HOLDING THE 1ST SET OF USER OPTION BUTTONS -->
@@ -26,12 +29,12 @@
 
             <!-- CONTAINER FOR USER SELECTED RECIPE BUTTON -->
             <div id="user-selected">
-                <button id="tell-us-button"></button>
+                <button id="tell-us-button">Tell Us What You Want</button>
             </div>
 
             <!-- CONTAINER FOR RANDOM SELECTED RECIPE BUTTON -->
             <div id="random-selection">
-                <button id="random-button"></button>
+                <button id="random-button">I Don't Know. Help Me!</button>
             </div>
         </div>
 
@@ -46,7 +49,10 @@
         </div>
         
         <!-- USER INPUT FOR FOOD TYPE SELECTION -->
-        <form id="user-input"></form>
+        <form id="user-input">
+            <label for="food-selection">Mexican, American, FRENCH, etc...</label>
+            <input type="text" id="food-selection">
+        </form>
 
         <!-- CONTAINER FOR BOTH RECIPE AND SONG -->
         <div id="user-selected-results">
@@ -71,6 +77,7 @@
         <!-- DESCRIPTION FOR RANDOM FOOD TYPE RECIPE & SONG -->
         <div id="radom-directions">
             <p>Don't know what you want? We'll pick for you!</p>
+            <button>Feeling Lucky?</button>
         </div>
 
         <!-- CONTAINER FOR BOTH RECIPE AND SONG -->
