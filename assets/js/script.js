@@ -28,7 +28,7 @@ function formSubmitHandler(event) {
     }
 };
 
-// // GET RECIPE INFO
+// // GET MEAL ID VIA CUISE/AREA SEARCH
 function getMeal(CuisineName) {
     var apiUrl = `https://themealdb.com/api/json/v1/1/filter.php?a=${CuisineName}`;
 
@@ -54,15 +54,16 @@ function getMeal(CuisineName) {
     });
 };
 
+// CONVERT MEAL DATA ARRAY TO IDMEAL TO PASS THROUGH GETRECIPE TO ACCESS ADDTL RECIPE INFO
 function mealToId (data) {
-    for (var i = 0; i <= data.meals.length; i++) {
+    for (var i = 0; i <= data.meals.length-1; i++) {
 
         if (data) {
             let idMeal = data.meals[i].idMeal;
             getRecipe(idMeal);
             console.log(idMeal);
         }
-    }
+    };
 };
 
 function getRecipe (idMeal) {
@@ -77,7 +78,7 @@ function getRecipe (idMeal) {
             response.json()
             .then(function(idMeal) {
                 console.log(idMeal);
-                //displayRecipe(data);
+                //displayRecipe(idMeal);
             });
             // response recieved but error with request
         } else {
@@ -89,3 +90,17 @@ function getRecipe (idMeal) {
         alert("Unable to connect to Server");
     });
 };
+
+// function displayRecipe (idMeal) {
+    
+//     pickedMeal = idMeal[Math.floor(Math.random()*idMeal.length)];
+
+//     if (pickedMeal === 0) {
+//         selectedRecipeEl.textContent = "No cuisines by that name were found.";
+//         return;
+//     }
+
+//     if (pickedMeal) {
+//         console.log(pickedMeal);
+//     }
+// };
