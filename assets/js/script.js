@@ -97,16 +97,6 @@ function getRecipe (idMeal) {
     });
 };
 
-
-// function getRandomMealId (idMeal) {
-//     console.log(idMeal);
-//     let idArray = idMeal.length - idMeal[0] + 1;
-//     let randomIdArray = Math.random() * idArray;
-//     let pickedIndex = Math.floor(randomIdArray) + idMeal[0];
-
-//     console.log(pickedIndex);
-// }
-
 function displayRecipe (idMeal) {
 
     console.log(idMeal.meals[0].strMeal);
@@ -116,6 +106,7 @@ function displayRecipe (idMeal) {
         dishNameEl.innerHTML = "";
         ingredientTitleEl.innerHTML = "";
         ingredientListEl.innerHTML = "";
+        instructionsEl.innerHTML = "";
         // APPEND DISH NAME
         dishNameEl.append(idMeal.meals[0].strMeal);
         // APPEND INGREDIENTS TITLE
