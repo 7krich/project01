@@ -56,14 +56,11 @@ function getMeal(CuisineName) {
 
 // CONVERT MEAL DATA ARRAY TO IDMEAL TO PASS THROUGH GETRECIPE TO ACCESS ADDTL RECIPE INFO
 function mealToId (data) {
-    for (var i = 0; i <= data.meals.length - 1; i++) {
-
         if (data) {
-            let idMeal = data.meals[i].idMeal;
+            let idMeal = data.meals[Math.floor(Math.random() * data.meals.length)].idMeal;
             getRecipe(idMeal);
             console.log(idMeal);
         }
-    };
 };
 
 function getRecipe (idMeal) {
@@ -103,8 +100,10 @@ function getRecipe (idMeal) {
 
 function displayRecipe (idMeal) {
 
-    console.log(idMeal.meals[i].strMeal);
-    // for (var i = 0; i < idMeal.meals.length - 1; i++) {
+    //console.log(idMeal.meals[0].strMeal);
+    //for (var i = 0; i < idMeal.meals.length - 1; i++) {
+
+    //}
 
     //     if(idMeal) {
     //         console.log(idMeal.meals[i].strMeal);
