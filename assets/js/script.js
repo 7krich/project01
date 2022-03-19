@@ -24,7 +24,7 @@ function formSubmitHandler(event) {
     } else {
 
         // THIS NEEDS TO BE A MODAL
-        alert("Please enter a food type");
+        alert("Please enter a cuisine");
     }
 };
 
@@ -56,7 +56,7 @@ function getMeal(CuisineName) {
 
 // CONVERT MEAL DATA ARRAY TO IDMEAL TO PASS THROUGH GETRECIPE TO ACCESS ADDTL RECIPE INFO
 function mealToId (data) {
-    for (var i = 0; i <= data.meals.length-1; i++) {
+    for (var i = 0; i <= data.meals.length - 1; i++) {
 
         if (data) {
             let idMeal = data.meals[i].idMeal;
@@ -78,7 +78,7 @@ function getRecipe (idMeal) {
             response.json()
             .then(function(idMeal) {
                 console.log(idMeal);
-                //displayRecipe(idMeal);
+                displayRecipe(idMeal);
             });
             // response recieved but error with request
         } else {
@@ -91,16 +91,30 @@ function getRecipe (idMeal) {
     });
 };
 
-// function displayRecipe (idMeal) {
-    
-//     pickedMeal = idMeal[Math.floor(Math.random()*idMeal.length)];
 
-//     if (pickedMeal === 0) {
-//         selectedRecipeEl.textContent = "No cuisines by that name were found.";
-//         return;
-//     }
+// function getRandomMealId (idMeal) {
+//     console.log(idMeal);
+//     let idArray = idMeal.length - idMeal[0] + 1;
+//     let randomIdArray = Math.random() * idArray;
+//     let pickedIndex = Math.floor(randomIdArray) + idMeal[0];
 
-//     if (pickedMeal) {
-//         console.log(pickedMeal);
-//     }
-// };
+//     console.log(pickedIndex);
+// }
+
+function displayRecipe (idMeal) {
+
+    console.log(idMeal.meals[i].strMeal);
+    // for (var i = 0; i < idMeal.meals.length - 1; i++) {
+
+    //     if(idMeal) {
+    //         console.log(idMeal.meals[i].strMeal);
+    //     }
+
+    // }
+
+    // if (idMeal) {
+    //     selectedRecipeEl.innerHTML = "";
+    //     selectedRecipeEl.append(meals);
+    // }
+};
+
