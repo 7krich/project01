@@ -7,11 +7,13 @@ var dishNameEl = document.querySelector(".dish-name");
 var ingredientTitleEl = document.querySelector(".ingredient-title");
 var ingredientListEl = document.querySelector(".ingredient-list");
 var instructionsEl = document.querySelector(".instructions");
+var randomFormEl = document.querySelector("#random-container");
 
 // // EVENT LISTENERS
 userFormEl.addEventListener("submit", formSubmitHandler);
+randomFormEl.addEventListener("submit", randomFormSubmitHandler);
 
-// HANDLE SUBMIT EVENT
+// HANDLE USER INPUT SUBMIT EVENT
 function formSubmitHandler(event) {
     // prevent page from refreshing
     event.preventDefault();
@@ -33,7 +35,7 @@ function formSubmitHandler(event) {
     }
 };
 
-// // GET MEAL ID VIA CUISE/AREA SEARCH
+// // GET MEAL ID VIA CUISINE/AREA SEARCH
 function getMeal(CuisineName) {
     var apiUrl = `https://themealdb.com/api/json/v1/1/filter.php?a=${CuisineName}`;
 
@@ -84,7 +86,7 @@ function getRecipe (idMeal) {
             response.json()
             .then(function(idMeal) {
                 console.log(idMeal);
-                displayRecipe(idMeal);
+                displayUserRecipe(idMeal);
             });
             // response recieved but error with request
         } else {
@@ -97,7 +99,8 @@ function getRecipe (idMeal) {
     });
 };
 
-function displayRecipe (idMeal) {
+// DISPLAY USER INPUT RECIPE
+function displayUserRecipe (idMeal) {
 
     console.log(idMeal.meals[0].strMeal);
 
@@ -153,5 +156,42 @@ function displayRecipe (idMeal) {
         // APPEND DIRECTIONS
         instructionsEl.append(idMeal.meals[0].strInstructions);
     }
+};
+
+// HANDLE RANDOM SUBMIT EVENT
+function randomFormSubmitHandler (event) {
+    // prevent page from refreshing
+    event.preventDefault();
+
+        getRandomMeal();
+        //addToSearchHistory();
+};
+
+// GET MEAL ID VIA CUISE/AREA SEARCH
+function getRandomMeal () {
+    var apiUrl = `https://themealdb.com/api/json/v1/1/random.php`;
+
+    // make get request to URL
+    fetch(apiUrl)
+    .then(function(response) {
+        // request was successful
+        if (response.ok) {
+            // display current day in header
+            response.json()
+            .then(function(data) {
+                console.log(data);
+            });
+            // response recieved but error with request
+        } else {
+            alert("Error: " + response.statusText);
+        }
+    })
+    
+    // ** NEED TO TURN INTO MODAL
+
+    // provide user info if server can't be reached
+    .catch(function(error) {
+        alert("Unable to connect to Server");
+    });
 };
 
