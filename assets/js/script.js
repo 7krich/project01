@@ -7,11 +7,12 @@ var dishNameEl = document.querySelector(".dish-name");
 var ingredientTitleEl = document.querySelector(".ingredient-title");
 var ingredientListEl = document.querySelector(".ingredient-list");
 var instructionsEl = document.querySelector(".instructions");
-var randomFormEl = document.querySelector("#random-container");
+var randomButtonEl = document.querySelector("#random-container");
+var buttonEl = document.querySelector("#random-button");
 
 // // EVENT LISTENERS
 userFormEl.addEventListener("submit", formSubmitHandler);
-randomFormEl.addEventListener("submit", randomFormSubmitHandler);
+randomButtonEl.addEventListener("click", randomSubmitHandler);
 
 // HANDLE USER INPUT SUBMIT EVENT
 function formSubmitHandler(event) {
@@ -144,6 +145,8 @@ function displayUserRecipe (idMeal) {
         ingredientListEl.append(idMeal.meals[0].strIngredient14);
         ingredientListEl.append(idMeal.meals[0].strMeasure14);
         ingredientListEl.append(idMeal.meals[0].strIngredient15);
+        ingredientListEl.append(idMeal.meals[0].strMeasure15);
+        ingredientListEl.append(idMeal.meals[0].strIngredient16);
         ingredientListEl.append(idMeal.meals[0].strMeasure16);
         ingredientListEl.append(idMeal.meals[0].strIngredient17);
         ingredientListEl.append(idMeal.meals[0].strMeasure17);
@@ -159,7 +162,7 @@ function displayUserRecipe (idMeal) {
 };
 
 // HANDLE RANDOM SUBMIT EVENT
-function randomFormSubmitHandler (event) {
+function randomSubmitHandler (event) {
     // prevent page from refreshing
     event.preventDefault();
 
