@@ -4,6 +4,9 @@ var userFormEl = document.querySelector("#user-input-container");
 var userSearchEl = document.querySelector("#user-search-button");
 var selectedRecipeEl = document.querySelector("#recipe-selected");
 var randomButtonEl = document.querySelector("#random-container");
+// history variables
+var historyEl = document.querySelector("#search-history-results");
+let searchHistory = JSON.parse(localStorage.getItem("search"));
 // user variables
 var dishNameEl = document.querySelector("#dish-name-1");
 var ingredientTitleEl = document.querySelector("#ingredient-title-1");
@@ -31,7 +34,7 @@ function formSubmitHandler(event) {
 
     if (foodType) {
         getMeal(foodType);
-        //addToSearchHistory();
+        addToSearchHistory();
 
         // clear old content
         userInputEl.value = "";
@@ -174,7 +177,7 @@ function randomClickHandler (event) {
     event.preventDefault();
 
         getRandomMeal();
-        //addToSearchHistory();
+        addToSearchHistory();
 };
 
 // GET MEAL ID VIA CUISE/AREA SEARCH
@@ -210,6 +213,7 @@ function getRandomMeal () {
 function displayRandomRecipe (data) {
 
     if (data) {
+
         // CLEAR OLD DATA UPON NEW SEARCH
         dishNameTwoEl.innerHTML = "";
         ingredientTitleTwoEl.innerHTML = "";
@@ -263,5 +267,42 @@ function displayRandomRecipe (data) {
         // APPEND DIRECTIONS
         instructionsTwoEl.append(data.meals[0].strInstructions);
     }
+};
 
-}
+// SEARCH HISTORY FUCNTIONS & LOCAL STORAGE
+function addToSearchHistory () {
+    if (!searchHistory) {
+        searchHistory = [];
+    }
+
+    searchHistory.push(userInputEl.value);
+    localStorage.setItem("search", JSON.stringify(searchHistory));
+
+    historyEl.insertAdjacentHTML("afterbegin", `<button id="${userInputEl.value}" onclick = "handleHistoryClick(event)">${userInputEl.value}</button>`)
+};
+
+if (searchHistory) {
+    for (let i = 0; i < searchHistory.length; i++) {
+        historyEl.insertAdjacentHTML("afterbegin", `<button id="${searchHistory[i]}" onclick = "handleHistoryClick(event)">${searchHistory[i]}</button>`)
+    }
+};
+
+function handleHistoryClick (event) {
+    // prevent page from refreshing
+    event.preventDefault();
+
+    // get value from input element
+    var recipeName = event.target.id;
+
+    if (recipeName) {
+        getRecipe(recipeName);
+
+        // clear old content
+        userInputEl.value = "";
+    }
+};
+
+function clearSearch() {
+    historyEl.innerHTML = "";
+    localStorage.clear();
+};

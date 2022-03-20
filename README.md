@@ -10,6 +10,6 @@ A website provides users access to random recipies either via cuisine search or 
 
 
 ## Website
-
+https://7krich.github.io/project01/
 
 ##Screenshots
