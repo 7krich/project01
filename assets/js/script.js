@@ -3,16 +3,23 @@ var userInputEl = document.querySelector("#search");
 var userFormEl = document.querySelector("#user-input-container");
 var userSearchEl = document.querySelector("#user-search-button");
 var selectedRecipeEl = document.querySelector("#recipe-selected");
-var dishNameEl = document.querySelector(".dish-name");
-var ingredientTitleEl = document.querySelector(".ingredient-title");
-var ingredientListEl = document.querySelector(".ingredient-list");
-var instructionsEl = document.querySelector(".instructions");
 var randomButtonEl = document.querySelector("#random-container");
-var buttonEl = document.querySelector("#random-button");
+// user variables
+var dishNameEl = document.querySelector("#dish-name-1");
+var ingredientTitleEl = document.querySelector("#ingredient-title-1");
+var ingredientListEl = document.querySelector("#ingredient-list-1");
+var instructionsEl = document.querySelector("#instructions-1");
+var dishNameTwoEl = document.querySelector("#dish-name-2");
+// random variables
+var ingredientTitleTwoEl = document.querySelector("#ingredient-title-2");
+var ingredientListTwoEl = document.querySelector("#ingredient-list-2");
+var instructionsTwoEl = document.querySelector("#instructions-2");
 
-// // EVENT LISTENERS
+// EVENT LISTENERS
+// cuisine form listener
 userFormEl.addEventListener("submit", formSubmitHandler);
-randomButtonEl.addEventListener("click", randomSubmitHandler);
+// random click listener
+randomButtonEl.addEventListener("click", randomClickHandler);
 
 // HANDLE USER INPUT SUBMIT EVENT
 function formSubmitHandler(event) {
@@ -162,7 +169,7 @@ function displayUserRecipe (idMeal) {
 };
 
 // HANDLE RANDOM SUBMIT EVENT
-function randomSubmitHandler (event) {
+function randomClickHandler (event) {
     // prevent page from refreshing
     event.preventDefault();
 
@@ -183,6 +190,7 @@ function getRandomMeal () {
             response.json()
             .then(function(data) {
                 console.log(data);
+                displayRandomRecipe(data);
             });
             // response recieved but error with request
         } else {
@@ -198,3 +206,62 @@ function getRandomMeal () {
     });
 };
 
+// DISPLAY RANDOMLY CLICKED RECIPE
+function displayRandomRecipe (data) {
+
+    if (data) {
+        // CLEAR OLD DATA UPON NEW SEARCH
+        dishNameTwoEl.innerHTML = "";
+        ingredientTitleTwoEl.innerHTML = "";
+        ingredientListTwoEl.innerHTML = "";
+        instructionsTwoEl.innerHTML = "";
+        // APPEND DISH NAME
+        dishNameTwoEl.append(data.meals[0].strMeal);
+        // APPEND INGREDIENTS TITLE
+        ingredientTitleTwoEl.append("Ingredients: ");
+        // APPEND INGREDIENTS & PAIR WITH MEASUREMENT
+        ingredientListTwoEl.append(data.meals[0].strIngredient1);
+        ingredientListTwoEl.append(data.meals[0].strMeasure1);
+        ingredientListTwoEl.append(data.meals[0].strIngredient2);
+        ingredientListTwoEl.append(data.meals[0].strMeasure2);
+        ingredientListTwoEl.append(data.meals[0].strIngredient3);
+        ingredientListTwoEl.append(data.meals[0].strMeasure3);
+        ingredientListTwoEl.append(data.meals[0].strIngredient4);
+        ingredientListTwoEl.append(data.meals[0].strMeasure4);
+        ingredientListTwoEl.append(data.meals[0].strIngredient5);
+        ingredientListTwoEl.append(data.meals[0].strMeasure5);
+        ingredientListTwoEl.append(data.meals[0].strIngredient6);
+        ingredientListTwoEl.append(data.meals[0].strMeasure6);
+        ingredientListTwoEl.append(data.meals[0].strIngredient7);
+        ingredientListTwoEl.append(data.meals[0].strMeasure7);
+        ingredientListTwoEl.append(data.meals[0].strIngredient8);
+        ingredientListTwoEl.append(data.meals[0].strMeasure8);
+        ingredientListTwoEl.append(data.meals[0].strIngredient9);
+        ingredientListTwoEl.append(data.meals[0].strMeasure9);
+        ingredientListTwoEl.append(data.meals[0].strIngredient10);
+        ingredientListTwoEl.append(data.meals[0].strMeasure10);
+        ingredientListTwoEl.append(data.meals[0].strIngredient11);
+        ingredientListTwoEl.append(data.meals[0].strMeasure11);
+        ingredientListTwoEl.append(data.meals[0].strIngredient12);
+        ingredientListTwoEl.append(data.meals[0].strMeasure12);
+        ingredientListTwoEl.append(data.meals[0].strIngredient13);
+        ingredientListTwoEl.append(data.meals[0].strMeasure13);
+        ingredientListTwoEl.append(data.meals[0].strIngredient14);
+        ingredientListTwoEl.append(data.meals[0].strMeasure14);
+        ingredientListTwoEl.append(data.meals[0].strIngredient15);
+        ingredientListTwoEl.append(data.meals[0].strMeasure15);
+        ingredientListTwoEl.append(data.meals[0].strIngredient16);
+        ingredientListTwoEl.append(data.meals[0].strMeasure16);
+        ingredientListTwoEl.append(data.meals[0].strIngredient17);
+        ingredientListTwoEl.append(data.meals[0].strMeasure17);
+        ingredientListTwoEl.append(data.meals[0].strIngredient18);
+        ingredientListTwoEl.append(data.meals[0].strMeasure18);
+        ingredientListTwoEl.append(data.meals[0].strIngredient19);
+        ingredientListTwoEl.append(data.meals[0].strMeasure19);
+        ingredientListTwoEl.append(data.meals[0].strIngredient20);
+        ingredientListTwoEl.append(data.meals[0].strMeasure20);
+        // APPEND DIRECTIONS
+        instructionsTwoEl.append(data.meals[0].strInstructions);
+    }
+
+}
