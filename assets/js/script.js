@@ -404,7 +404,7 @@ function displaySavedRecipe (data) {
         // APPEND DISH NAME
         dishNameHistEl.append(data.meals[0].strMeal);
         // APPEND INGREDIENTS TITLE
-        ingredientTitleEl.append("Ingredients: ");
+        ingredientTitleHistEl.append("Ingredients: ");
         // APPEND INGREDIENTS & PAIR WITH MEASUREMENT
         ingredientListHistEl.append(data.meals[0].strIngredient1);
         ingredientListHistEl.append(data.meals[0].strMeasure1);
