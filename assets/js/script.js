@@ -275,39 +275,63 @@ function displayRandomRecipe (data) {
     }
 
     // store meal title to pass through local storage function
-    let savePickedMeal = data.meals[0].strMeal;
-
-
-        addToSearchHistory(savePickedMeal);
-
+    let saveRandomMeal = data.meals[0].strMeal;
     
+        addRandomSearchHistory(saveRandomMeal);
 };
 
-// SEARCH HISTORY FUNCTIONS & LOCAL STORAGE
+// ADD USER PICKED MEALS TO LOCAL STORAGE AND APPEND NEW BUTTONS SO THEY CAN BE ACCESSED
 function addToSearchHistory (savePickedMeal) {
 
-    console.log(savePickedMeal);
+    //console.log(savePickedMeal);
 
     if (!searchHistory) {
         searchHistory = [];
     }
 
+    // only run if item is not already in local storage
     if (!searchHistory.includes(savePickedMeal)) {
 
+        // add picked meal to search history
         searchHistory.push(savePickedMeal);
+        // then turn it into a string
         localStorage.setItem("search", JSON.stringify(searchHistory));
 
-
+        //and add the button so it can be access later on
         historyEl.insertAdjacentHTML("afterbegin", `<button id="${savePickedMeal}" onclick = "handleHistoryClick(event)">${savePickedMeal}</button>`)
     }
 };
 
+// ADD RANDOM MEALS TO LOCAL STORAGE AND APPEND NEW BUTTONS SO THEY CAN BE ACCESSED
+function addRandomSearchHistory (saveRandomMeal) {
+
+    //console.log(savePickedMeal);
+
+    if (!searchHistory) {
+        searchHistory = [];
+    }
+
+    // only run if item is not already in local storage
+    if (!searchHistory.includes(saveRandomMeal)) {
+
+        // add random meal to search history
+        searchHistory.push(saveRandomMeal);
+        // then turn it into a string
+        localStorage.setItem("search", JSON.stringify(searchHistory));
+
+        //and add the button so it can be access later on
+        historyEl.insertAdjacentHTML("afterbegin", `<button id="${saveRandomMeal}" onclick = "handleHistoryClick(event)">${saveRandomMeal}</button>`)
+    }
+};
+
+// LOOP THROUGH SEARCH HISTORY TO PULL HISTORY ITEM UPON CLICK
 if (searchHistory) {
     for (let i = 0; i < searchHistory.length; i++) {
         historyEl.insertAdjacentHTML("afterbegin", `<button id="${searchHistory[i]}" onclick = "handleHistoryClick(event)">${searchHistory[i]}</button>`)
     }
 };
 
+// EVENT HANDLER FOR HISTORY ITEM CLICK
 function handleHistoryClick (event) {
     // prevent page from refreshing
     event.preventDefault();
@@ -323,13 +347,14 @@ function handleHistoryClick (event) {
     }
 };
 
+// CLEAR LOCAL STORAGE AND ADDED BUTTONS WHEN CLEAR HISTORY BUTTON IS CLICKED
 function clearSearch() {
     searchHistory = [];
     historyEl.innerHTML = "";
     localStorage.clear();
 };
 
-// GET MEAL VIA NAME WHEN ACCESSING LOCAL STORAGE TO RE-GENERATE RECIPE
+// GET MEAL VIA NAME WHEN ACCESSING LOCAL STORAGE TO RE-GENERATE USER PICKED RECIPE
 function getSavedRecipe(savePickedMeal) {
     var apiUrl = `https://themealdb.com/api/json/v1/1/search.php?s=${savePickedMeal}`;
 
@@ -341,8 +366,37 @@ function getSavedRecipe(savePickedMeal) {
             // display current day in header
             response.json()
             .then(function(data) {
-                console.log(data);
-                displayUserRecipe(data);
+                //console.log(data);
+                    displayUserRecipe(data);
+            });
+            // response recieved but error with request
+        } else {
+            alert("Error: " + response.statusText);
+        }
+    })
+    
+    // ** NEED TO TURN INTO MODAL
+
+    // provide user info if server can't be reached
+    .catch(function(error) {
+        alert("Unable to connect to Server");
+    });
+};
+
+// GET MEAL VIA NAME WHEN ACCESSING LOCAL STORAGE TO RE-GENERATE RANDOM RECIPE
+function getSavedRecipe(saveRandomMeal) {
+    var apiUrl = `https://themealdb.com/api/json/v1/1/search.php?s=${saveRandomMeal}`;
+
+    // make get request to URL
+    fetch(apiUrl)
+    .then(function(response) {
+        // request was successful
+        if (response.ok) {
+            // display current day in header
+            response.json()
+            .then(function(data) {
+                //console.log(data);
+                    displayRandomRecipe(data);
             });
             // response recieved but error with request
         } else {
