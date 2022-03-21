@@ -7,16 +7,21 @@ var randomButtonEl = document.querySelector("#random-container");
 // history variables
 var historyEl = document.querySelector("#search-history-results");
 let searchHistory = JSON.parse(localStorage.getItem("search"));
-// user variables
+// user display variables
 var dishNameEl = document.querySelector("#dish-name-1");
 var ingredientTitleEl = document.querySelector("#ingredient-title-1");
 var ingredientListEl = document.querySelector("#ingredient-list-1");
 var instructionsEl = document.querySelector("#instructions-1");
 var dishNameTwoEl = document.querySelector("#dish-name-2");
-// random variables
+// random display variables
 var ingredientTitleTwoEl = document.querySelector("#ingredient-title-2");
 var ingredientListTwoEl = document.querySelector("#ingredient-list-2");
 var instructionsTwoEl = document.querySelector("#instructions-2");
+//history display variables
+var dishNameHistEl = document.querySelector("#dish-name-h");
+var ingredientTitleHistEl = document.querySelector("#ingredient-title-h");
+var ingredientListHistEl = document.querySelector("#ingredient-list-h");
+var instructionsHistEl = document.querySelector("#instructions-h");
 
 // EVENT LISTENERS
 // cuisine form listener
@@ -275,9 +280,12 @@ function displayRandomRecipe (data) {
     }
 
     // store meal title to pass through local storage function
-    let saveRandomMeal = data.meals[0].strMeal;
+    let savePickedMeal = data.meals[0].strMeal;
+
+
+        addToSearchHistory(savePickedMeal);
+
     
-        addRandomSearchHistory(saveRandomMeal);
 };
 
 // ADD USER PICKED MEALS TO LOCAL STORAGE AND APPEND NEW BUTTONS SO THEY CAN BE ACCESSED
@@ -297,13 +305,14 @@ function addToSearchHistory (savePickedMeal) {
         // then turn it into a string
         localStorage.setItem("search", JSON.stringify(searchHistory));
 
-        //and add the button so it can be access later on
+
+        //and add the button so it can be access later
         historyEl.insertAdjacentHTML("afterbegin", `<button id="${savePickedMeal}" onclick = "handleHistoryClick(event)">${savePickedMeal}</button>`)
     }
 };
 
-// ADD RANDOM MEALS TO LOCAL STORAGE AND APPEND NEW BUTTONS SO THEY CAN BE ACCESSED
-function addRandomSearchHistory (saveRandomMeal) {
+// SEARCH HISTORY FUNCTIONS & LOCAL STORAGE
+function addToSearchHistory (savePickedMeal) {
 
     //console.log(savePickedMeal);
 
@@ -311,16 +320,13 @@ function addRandomSearchHistory (saveRandomMeal) {
         searchHistory = [];
     }
 
-    // only run if item is not already in local storage
-    if (!searchHistory.includes(saveRandomMeal)) {
+    if (!searchHistory.includes(savePickedMeal)) {
 
-        // add random meal to search history
-        searchHistory.push(saveRandomMeal);
-        // then turn it into a string
+        searchHistory.push(savePickedMeal);
         localStorage.setItem("search", JSON.stringify(searchHistory));
 
-        //and add the button so it can be access later on
-        historyEl.insertAdjacentHTML("afterbegin", `<button id="${saveRandomMeal}" onclick = "handleHistoryClick(event)">${saveRandomMeal}</button>`)
+
+        historyEl.insertAdjacentHTML("afterbegin", `<button id="${savePickedMeal}" onclick = "handleHistoryClick(event)">${savePickedMeal}</button>`)
     }
 };
 
@@ -354,7 +360,7 @@ function clearSearch() {
     localStorage.clear();
 };
 
-// GET MEAL VIA NAME WHEN ACCESSING LOCAL STORAGE TO RE-GENERATE USER PICKED RECIPE
+// GET MEAL VIA NAME WHEN ACCESSING LOCAL STORAGE TO RE-GENERATE RECIPE
 function getSavedRecipe(savePickedMeal) {
     var apiUrl = `https://themealdb.com/api/json/v1/1/search.php?s=${savePickedMeal}`;
 
@@ -367,7 +373,7 @@ function getSavedRecipe(savePickedMeal) {
             response.json()
             .then(function(data) {
                 //console.log(data);
-                    displayUserRecipe(data);
+                    displaySavedRecipe(data);
             });
             // response recieved but error with request
         } else {
@@ -383,31 +389,64 @@ function getSavedRecipe(savePickedMeal) {
     });
 };
 
-// GET MEAL VIA NAME WHEN ACCESSING LOCAL STORAGE TO RE-GENERATE RANDOM RECIPE
-function getSavedRecipe(saveRandomMeal) {
-    var apiUrl = `https://themealdb.com/api/json/v1/1/search.php?s=${saveRandomMeal}`;
 
-    // make get request to URL
-    fetch(apiUrl)
-    .then(function(response) {
-        // request was successful
-        if (response.ok) {
-            // display current day in header
-            response.json()
-            .then(function(data) {
-                //console.log(data);
-                    displayRandomRecipe(data);
-            });
-            // response recieved but error with request
-        } else {
-            alert("Error: " + response.statusText);
-        }
-    })
-    
-    // ** NEED TO TURN INTO MODAL
+// DISPLAY USER INPUT RECIPE
+function displaySavedRecipe (data) {
 
-    // provide user info if server can't be reached
-    .catch(function(error) {
-        alert("Unable to connect to Server");
-    });
+    console.log(data.meals[0].strMeal);
+
+    if (data) {
+        // CLEAR OLD DATA UPON NEW SEARCH
+        dishNameHistEl.innerHTML = "";
+        ingredientTitleHistEl.innerHTML = "";
+        ingredientListHistEl.innerHTML = "";
+        instructionsHistEl.innerHTML = "";
+        // APPEND DISH NAME
+        dishNameHistEl.append(data.meals[0].strMeal);
+        // APPEND INGREDIENTS TITLE
+        ingredientTitleEl.append("Ingredients: ");
+        // APPEND INGREDIENTS & PAIR WITH MEASUREMENT
+        ingredientListHistEl.append(data.meals[0].strIngredient1);
+        ingredientListHistEl.append(data.meals[0].strMeasure1);
+        ingredientListHistEl.append(data.meals[0].strIngredient2);
+        ingredientListHistEl.append(data.meals[0].strMeasure2);
+        ingredientListHistEl.append(data.meals[0].strIngredient3);
+        ingredientListHistEl.append(data.meals[0].strMeasure3);
+        ingredientListHistEl.append(data.meals[0].strIngredient4);
+        ingredientListHistEl.append(data.meals[0].strMeasure4);
+        ingredientListHistEl.append(data.meals[0].strIngredient5);
+        ingredientListHistEl.append(data.meals[0].strMeasure5);
+        ingredientListHistEl.append(data.meals[0].strIngredient6);
+        ingredientListHistEl.append(data.meals[0].strMeasure6);
+        ingredientListHistEl.append(data.meals[0].strIngredient7);
+        ingredientListHistEl.append(data.meals[0].strMeasure7);
+        ingredientListHistEl.append(data.meals[0].strIngredient8);
+        ingredientListHistEl.append(data.meals[0].strMeasure8);
+        ingredientListHistEl.append(data.meals[0].strIngredient9);
+        ingredientListHistEl.append(data.meals[0].strMeasure9);
+        ingredientListHistEl.append(data.meals[0].strIngredient10);
+        ingredientListHistEl.append(data.meals[0].strMeasure10);
+        ingredientListHistEl.append(data.meals[0].strIngredient11);
+        ingredientListHistEl.append(data.meals[0].strMeasure11);
+        ingredientListHistEl.append(data.meals[0].strIngredient12);
+        ingredientListHistEl.append(data.meals[0].strMeasure12);
+        ingredientListHistEl.append(data.meals[0].strIngredient13);
+        ingredientListHistEl.append(data.meals[0].strMeasure13);
+        ingredientListHistEl.append(data.meals[0].strIngredient14);
+        ingredientListHistEl.append(data.meals[0].strMeasure14);
+        ingredientListHistEl.append(data.meals[0].strIngredient15);
+        ingredientListHistEl.append(data.meals[0].strMeasure15);
+        ingredientListHistEl.append(data.meals[0].strIngredient16);
+        ingredientListHistEl.append(data.meals[0].strMeasure16);
+        ingredientListHistEl.append(data.meals[0].strIngredient17);
+        ingredientListHistEl.append(data.meals[0].strMeasure17);
+        ingredientListHistEl.append(data.meals[0].strIngredient18);
+        ingredientListHistEl.append(data.meals[0].strMeasure18);
+        ingredientListHistEl.append(data.meals[0].strIngredient19);
+        ingredientListHistEl.append(data.meals[0].strMeasure19);
+        ingredientListHistEl.append(data.meals[0].strIngredient20);
+        ingredientListHistEl.append(data.meals[0].strMeasure20);
+        // APPEND DIRECTIONS
+        instructionsHistEl.append(data.meals[0].strInstructions);
+    }
 };
