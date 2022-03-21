@@ -306,7 +306,7 @@ function handleHistoryClick (event) {
     var recipeName = event.target.id;
 
     if (recipeName) {
-        getRecipe(recipeName);
+        getSavedRecipe(recipeName);
 
         // clear old content
         userInputEl.value = "";
@@ -317,4 +317,33 @@ function clearSearch() {
     searchHistory = [];
     historyEl.innerHTML = "";
     localStorage.clear();
+};
+
+// GET MEAL VIA NAME WHEN ACCESSING LOCAL STORAGE TO RE-GENERATE RECIPE
+function getSavedRecipe(savePickedMeal) {
+    var apiUrl = `https://themealdb.com/api/json/v1/1/search.php?s=${savePickedMeal}`;
+
+    // make get request to URL
+    fetch(apiUrl)
+    .then(function(response) {
+        // request was successful
+        if (response.ok) {
+            // display current day in header
+            response.json()
+            .then(function(data) {
+                console.log(data);
+                displayUserRecipe(data);
+            });
+            // response recieved but error with request
+        } else {
+            alert("Error: " + response.statusText);
+        }
+    })
+    
+    // ** NEED TO TURN INTO MODAL
+
+    // provide user info if server can't be reached
+    .catch(function(error) {
+        alert("Unable to connect to Server");
+    });
 };
