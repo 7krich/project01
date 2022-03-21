@@ -22,6 +22,12 @@ var dishNameHistEl = document.querySelector("#dish-name-h");
 var ingredientTitleHistEl = document.querySelector("#ingredient-title-h");
 var ingredientListHistEl = document.querySelector("#ingredient-list-h");
 var instructionsHistEl = document.querySelector("#instructions-h");
+// Get the modal
+var modal = document.getElementById("myModal");
+// Get the button that opens the modal
+var btn = document.getElementById("myBtn");
+// Modal Text
+var modalTextEl = document.querySelector("#modal-text")
 
 // EVENT LISTENERS
 // cuisine form listener
@@ -44,10 +50,29 @@ function formSubmitHandler(event) {
         userInputEl.value = "";
     } else {
 
-        // ** NEED TO TURN INTO MODAL
+        // MODAL
 
-        alert("Please enter a cuisine");
-    }
+        // Get the <span> element that closes the modal
+        var span = document.getElementsByClassName("close")[0];
+
+        // When the user clicks on the button, open the modal and add innerHTML text
+        userSearchEl.onclick = function() {
+        modal.style.display = "block";
+        modalTextEl.innerHTML = "Please enter a country name to search by cuisine!";
+        };
+
+        // When the user clicks on <span> (x), close the modal
+        span.onclick = function() {
+            modal.style.display = "none";
+        };
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        };
+    };
 };
 
 // // GET MEAL ID VIA CUISINE/AREA SEARCH
@@ -67,16 +92,53 @@ function getMeal(CuisineName) {
             });
             // response recieved but error with request
         } else {
-            alert("Error: " + response.statusText);
-        }
-    })
-    
-    // ** NEED TO TURN INTO MODAL
 
-    // provide user info if server can't be reached
-    .catch(function(error) {
-        alert("Unable to connect to Server");
+
+            // MODAL
+
+            // Get the <span> element that closes the modal
+            var span = document.getElementsByClassName("close")[0];
+
+            // When the user clicks on the button, open the modal and add innerHTML text
+            userSearchEl.onclick = function() {
+            modal.style.display = "block";
+            modalTextEl.innerHTML = ("Error: " + response.statusText);
+            };
+
+            // When the user clicks on <span> (x), close the modal
+            span.onclick = function() {
+                modal.style.display = "none";
+            };
+
+            // When the user clicks anywhere outside of the modal, close it
+            window.onclick = function(event) {
+                if (event.target == modal) {
+                    modal.style.display = "none";
+                }
+            };
+        };
     });
+    
+    // MODAL
+        // Get the <span> element that closes the modal
+        var span = document.getElementsByClassName("close")[0];
+
+        // When the user clicks on the button, open the modal
+        userSearchEl.onclick = function() {
+        modal.style.display = "block";
+        }
+
+        // When the user clicks on <span> (x), close the modal
+        span.onclick = function() {
+            modal.style.display = "none";
+        }
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
 };
 
 // CONVERT MEAL DATA ARRAY TO IDMEAL TO PASS THROUGH GETRECIPE TO ACCESS ADDTL RECIPE INFO
@@ -450,3 +512,7 @@ function displaySavedRecipe (data) {
         instructionsHistEl.append(data.meals[0].strInstructions);
     }
 };
+
+
+
+
