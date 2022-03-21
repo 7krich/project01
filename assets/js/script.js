@@ -171,7 +171,9 @@ function displayUserRecipe (idMeal) {
 
     // store meal title to pass through local storage function
     let savePickedMeal = idMeal.meals[0].strMeal;
-    addToSearchHistory(savePickedMeal);
+    
+    // if (!searchHistory.includes(savePickedMeal)) {
+        addToSearchHistory(savePickedMeal);    
 
 };
 
@@ -274,7 +276,11 @@ function displayRandomRecipe (data) {
 
     // store meal title to pass through local storage function
     let savePickedMeal = data.meals[0].strMeal;
-    addToSearchHistory(savePickedMeal);
+
+
+        addToSearchHistory(savePickedMeal);
+
+    
 };
 
 // SEARCH HISTORY FUNCTIONS & LOCAL STORAGE
@@ -286,10 +292,14 @@ function addToSearchHistory (savePickedMeal) {
         searchHistory = [];
     }
 
-    searchHistory.push(savePickedMeal);
-    localStorage.setItem("search", JSON.stringify(searchHistory));
+    if (!searchHistory.includes(savePickedMeal)) {
 
-    historyEl.insertAdjacentHTML("afterbegin", `<button id="${savePickedMeal}" onclick = "handleHistoryClick(event)">${savePickedMeal}</button>`)
+        searchHistory.push(savePickedMeal);
+        localStorage.setItem("search", JSON.stringify(searchHistory));
+
+
+        historyEl.insertAdjacentHTML("afterbegin", `<button id="${savePickedMeal}" onclick = "handleHistoryClick(event)">${savePickedMeal}</button>`)
+    }
 };
 
 if (searchHistory) {
