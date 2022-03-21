@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <!-- DIV CONTAINING TITLE ON THE PAGE -->
+    <div id="title-container">
+        <h1>Website Title</h1>
+    </div>
+
+    <!-- 1ST MAIN SECTION HOLDING THE 1ST SET OF USER OPTION BUTTONS -->
+    <div class="section-container">
+
+        <!-- DESCRIPTION FOR USER DIV -->
+        <div id="user-directions">
+            <p>Choose an option below:</p>
+        </div>
+
+        <!-- DIV TO HOLD BOTH BUTTONS IN 1ST SECTION -->
+        <div class=container>
+
+            <!-- CONTAINER FOR USER SELECTED RECIPE BUTTON -->
+            <div id="user-selected">
+                <button id="tell-us-button">Tell Us What You Want</button>
+            </div>
+
+            <!-- CONTAINER FOR RANDOM SELECTED RECIPE BUTTON -->
+            <div id="random-selection">
+                <button id="random-button">I don't know what I want, Help me!</button>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- 2ND MAIN SECTION HOLDING ANOTHER SHORT DESCRIPTION, USER INPUT FIELD, SUBMIT BUTTON & 2 LARGE SECTIONS FILLED WITH API INFORMATION FROM SERVER-->
+    <div class="section-contianer">
+
+        <!-- DESCRIPTION FOR CHOOSE FOOD TYPE RECIPE & SONG -->
+        <div id="tell-us-directions">
+            <p>Tell us what you're feeling:</p>
+        </div>
+        
+        <!-- USER INPUT FOR FOOD TYPE SELECTION -->
+        <form id="user-input-container">
+
+            <input name="user-input" id="search" type="text" autofocus="true" class="form-input" />
+
+
+            <button type="submit" id="user-search-button">Search</button>
+
+        </form>
+
+
+        <!-- CONTAINER FOR BOTH RECIPE AND SONG -->
+        <div id="user-selected-results">
+
+            <!-- USER SELECTED RANDOM RECIPE RESULT GOES HERE -->
+            <div id="recipe-selected">
+
+                <div id="dish-name-1">
+                </div>
+
+                <div id="ingredient-title-1">
+                </div>
+
+                <ol id="ingredient-list-1">
+                </ol>
+
+                <div id="instructions-1">
+                </div>
+
+            </div>
+
+            <!-- USER SELECTED RANDOM PLAYLIST RESULT GOES HERE -->
+            <div class="playlist-selected">
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- 3RD MAIN SECTION HOLDING ANOTHER FEELING LUCKY/RANDOM SUBMIT BUTTON & 2 LARGE SECTIONS FILLED WITH API INFORMATION FROM SERVER-->
+    <div class="section-contianer">
+
+        <!-- DESCRIPTION FOR RANDOM FOOD TYPE RECIPE & SONG -->
+        <div id="radom-directions">
+            <p>Don't know what you want? We'll pick for you!</p>
+        </div>
+
+        <div id="random-container">
+
+        <button type="button" id="random-button">Pick for me</button>
+
+        </div>
+
+        <!-- CONTAINER FOR BOTH RECIPE AND SONG -->
+        <div id="random-results">
+
+            <!-- RANDOMLY SELECTED RANDOM RECIPE RESULT GOES HERE -->
+            <div id="recipe-random">
+
+                <div id="random-recipe-selected">
+
+                    <div id="dish-name-2">
+                    </div>
+    
+                    <div id="ingredient-title-2">
+                    </div>
+    
+                    <ol id="ingredient-list-2">
+                    </ol>
+    
+                    <div id="instructions-2">
+                    </div>
+    
+                </div>
+
+            </div>
+
+            <!-- RANDOMLY SELECTED RANDOM PLAYLIST RESULT GOES HERE -->
+            <div id="playlist-random">
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- 4TH MAIN SECTION HOLDING SEARCH HISTORY -->
+    <div class="section-container">
+
+        <div id="history-section">
+
+            <h2>Search History</h2>
+
+            <button id="clear-history" class="btn" onclick ="clearSearch()">Clear History</button>
+
+            <div id="search-history-results">
+
+            </div>
+        </div>
+
+    </div> 
+
+    <!-- FOOTER -->
+    <footer>
+        
+    </footer>
+    
+    <script src="./assets/js/script.js"></script>
+</body>
+</html>
