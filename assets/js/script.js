@@ -34,7 +34,6 @@ function formSubmitHandler(event) {
 
     if (foodType) {
         getMeal(foodType);
-        addToSearchHistory();
 
         // clear old content
         userInputEl.value = "";
@@ -169,6 +168,11 @@ function displayUserRecipe (idMeal) {
         // APPEND DIRECTIONS
         instructionsEl.append(idMeal.meals[0].strInstructions);
     }
+
+    // store meal title to pass through local storage function
+    let savePickedMeal = idMeal.meals[0].strMeal;
+    addToSearchHistory(savePickedMeal);
+
 };
 
 // HANDLE RANDOM SUBMIT EVENT
@@ -177,7 +181,7 @@ function randomClickHandler (event) {
     event.preventDefault();
 
         getRandomMeal();
-        addToSearchHistory();
+        //addToSearchHistory();
 };
 
 // GET MEAL ID VIA CUISE/AREA SEARCH
@@ -267,18 +271,25 @@ function displayRandomRecipe (data) {
         // APPEND DIRECTIONS
         instructionsTwoEl.append(data.meals[0].strInstructions);
     }
+
+    // store meal title to pass through local storage function
+    let savePickedMeal = data.meals[0].strMeal;
+    addToSearchHistory(savePickedMeal);
 };
 
-// SEARCH HISTORY FUCNTIONS & LOCAL STORAGE
-function addToSearchHistory () {
+// SEARCH HISTORY FUNCTIONS & LOCAL STORAGE
+function addToSearchHistory (savePickedMeal) {
+
+    console.log(savePickedMeal);
+
     if (!searchHistory) {
         searchHistory = [];
     }
 
-    searchHistory.push(userInputEl.value);
+    searchHistory.push(savePickedMeal);
     localStorage.setItem("search", JSON.stringify(searchHistory));
 
-    historyEl.insertAdjacentHTML("afterbegin", `<button id="${userInputEl.value}" onclick = "handleHistoryClick(event)">${userInputEl.value}</button>`)
+    historyEl.insertAdjacentHTML("afterbegin", `<button id="${savePickedMeal}" onclick = "handleHistoryClick(event)">${savePickedMeal}</button>`)
 };
 
 if (searchHistory) {
@@ -303,6 +314,7 @@ function handleHistoryClick (event) {
 };
 
 function clearSearch() {
+    searchHistory = [];
     historyEl.innerHTML = "";
     localStorage.clear();
 };
