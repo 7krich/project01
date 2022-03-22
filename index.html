@@ -29,14 +29,14 @@
         <div class=container>
 
             <!-- CONTAINER FOR USER SELECTED RECIPE BUTTON -->
-            <div id="user-selected">
+            <div id="user-selected" class="choose-or-random">
                 <nav>
                     <a href="#user-input">What Are You in the Mood For?</a>
                 </nav>
             </div>
 
             <!-- CONTAINER FOR RANDOM SELECTED RECIPE BUTTON -->
-            <div id="random-selection">
+            <div id="random-selection" class="choose-or-random">
                 <nav>
                     <a href="#random-directions">I Don't Know. Inspire Me!</a>
                 </nav>
@@ -46,7 +46,7 @@
     </div>
 
     <!-- 2ND MAIN SECTION HOLDING ANOTHER SHORT DESCRIPTION, USER INPUT FIELD, SUBMIT BUTTON & 2 LARGE SECTIONS FILLED WITH API INFORMATION FROM SERVER-->
-    <div class="section-contianer">
+    <div class="section-container">
 
         <!-- DESCRIPTION FOR CHOOSE FOOD TYPE RECIPE & SONG -->
         <div id="tell-us-directions">
@@ -57,7 +57,7 @@
         <form id="user-input">
             <label for="food-selection">Mexican, American, FRENCH, etc...</label>
             <input type="text" id="food-selection">
-            <button>Voila</button>
+            <button id="submit-selection">Voila</button>
         </form>
 
         <!-- CONTAINER FOR BOTH RECIPE AND SONG -->
@@ -69,7 +69,7 @@
             </div>
 
             <!-- USER SELECTED RANDOM PLAYLIST RESULT GOES HERE -->
-            <div class="playlist-selected">
+            <div id="playlist-selected">
 
             </div>
 
@@ -81,7 +81,7 @@
     <div class="section-contianer">
 
         <!-- DESCRIPTION FOR RANDOM FOOD TYPE RECIPE & SONG -->
-        <div id="radom-directions">
+        <div id="random-directions">
             <p>Don't know what you want? We'll pick for you!</p>
             <button>Feeling Lucky?</button>
         </div>
