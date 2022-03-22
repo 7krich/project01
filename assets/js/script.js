@@ -57,7 +57,6 @@ function formSubmitHandler(event) {
         modal.style.display = "block";
         modalTextEl.innerHTML = "Please enter a country name to access cuisines!";
 
-
         // When the user clicks on <span> (x), close the modal
         span.onclick = function() {
             modal.style.display = "none";
@@ -89,9 +88,27 @@ function getMeal(CuisineName) {
             });
             // response recieved but error with request
         } else {
-            alert("Error: " + response.statusText);
-        }
-    })
+            // MODAL
+            // Get the <span> element that closes the modal
+            var span = document.getElementsByClassName("close")[0];
+
+            // When the user clicks on the button, open the modal
+            modal.style.display = "block";
+            modalTextEl.innerHTML = ("Error: " + response.statusText);
+
+            // When the user clicks on <span> (x), close the modal
+            span.onclick = function() {
+                modal.style.display = "none";
+            }
+
+            // When the user clicks anywhere outside of the modal, close it
+            window.onclick = function(event) {
+                if (event.target == modal) {
+                    modal.style.display = "none";
+                }
+            };
+        };
+    });
 };
 
 // CONVERT MEAL DATA ARRAY TO IDMEAL TO PASS THROUGH GETRECIPE TO ACCESS ADDTL RECIPE INFO
@@ -120,12 +137,48 @@ function getRecipe (idMeal) {
             });
             // response recieved but error with request
         } else {
-            alert("Error: " + response.statusText);
+            // MODAL
+            // Get the <span> element that closes the modal
+            var span = document.getElementsByClassName("close")[0];
+
+            // When the user clicks on the button, open the modal
+            modal.style.display = "block";
+            modalTextEl.innerHTML = ("Error: " + response.statusText);
+
+            // When the user clicks on <span> (x), close the modal
+            span.onclick = function() {
+                modal.style.display = "none";
+            }
+
+            // When the user clicks anywhere outside of the modal, close it
+            window.onclick = function(event) {
+                if (event.target == modal) {
+                    modal.style.display = "none";
+                }
+            };
         }
     })
     // provide user info if server can't be reached
     .catch(function(error) {
-        alert("Unable to connect to Server");
+        // MODAL
+        // Get the <span> element that closes the modal
+        var span = document.getElementsByClassName("close")[0];
+
+        // When the user clicks on the button, open the modal
+        modal.style.display = "block";
+        modalTextEl.innerHTML = ("Unable to connect to the server");
+
+        // When the user clicks on <span> (x), close the modal
+        span.onclick = function() {
+            modal.style.display = "none";
+        }
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        };
     });
 };
 
@@ -223,15 +276,48 @@ function getRandomMeal () {
             });
             // response recieved but error with request
         } else {
-            alert("Error: " + response.statusText);
+            // MODAL
+            // Get the <span> element that closes the modal
+            var span = document.getElementsByClassName("close")[0];
+
+            // When the user clicks on the button, open the modal
+            modal.style.display = "block";
+            modalTextEl.innerHTML = ("Error: " + response.statusText);
+
+            // When the user clicks on <span> (x), close the modal
+            span.onclick = function() {
+                modal.style.display = "none";
+            }
+
+            // When the user clicks anywhere outside of the modal, close it
+            window.onclick = function(event) {
+                if (event.target == modal) {
+                    modal.style.display = "none";
+                }
+            };
         }
     })
-    
-    // ** NEED TO TURN INTO MODAL
-
     // provide user info if server can't be reached
     .catch(function(error) {
-        alert("Unable to connect to Server");
+        // MODAL
+        // Get the <span> element that closes the modal
+        var span = document.getElementsByClassName("close")[0];
+
+        // When the user clicks on the button, open the modal
+        modal.style.display = "block";
+        modalTextEl.innerHTML = ("Unabled to connect to server");
+
+        // When the user clicks on <span> (x), close the modal
+        span.onclick = function() {
+            modal.style.display = "none";
+        }
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        };
     });
 };
 
@@ -297,10 +383,8 @@ function displayRandomRecipe (data) {
     // store meal title to pass through local storage function
     let savePickedMeal = data.meals[0].strMeal;
 
-
         addToSearchHistory(savePickedMeal);
 
-    
 };
 
 // ADD USER PICKED MEALS TO LOCAL STORAGE AND APPEND NEW BUTTONS SO THEY CAN BE ACCESSED
@@ -392,7 +476,25 @@ function getSavedRecipe(savePickedMeal) {
             });
             // response recieved but error with request
         } else {
-            alert("Error: " + response.statusText);
+            // MODAL
+            // Get the <span> element that closes the modal
+            var span = document.getElementsByClassName("close")[0];
+
+            // When the user clicks on the button, open the modal
+            modal.style.display = "block";
+            modalTextEl.innerHTML = ("Error: " + response.statusText);
+
+            // When the user clicks on <span> (x), close the modal
+            span.onclick = function() {
+                modal.style.display = "none";
+            }
+
+            // When the user clicks anywhere outside of the modal, close it
+            window.onclick = function(event) {
+                if (event.target == modal) {
+                    modal.style.display = "none";
+                }
+            };
         }
     })
     
@@ -400,7 +502,25 @@ function getSavedRecipe(savePickedMeal) {
 
     // provide user info if server can't be reached
     .catch(function(error) {
-        alert("Unable to connect to Server");
+            // MODAL
+            // Get the <span> element that closes the modal
+            var span = document.getElementsByClassName("close")[0];
+
+            // When the user clicks on the button, open the modal
+            modal.style.display = "block";
+            modalTextEl.innerHTML = ("Unable to connect to server");
+
+            // When the user clicks on <span> (x), close the modal
+            span.onclick = function() {
+                modal.style.display = "none";
+            }
+
+            // When the user clicks anywhere outside of the modal, close it
+            window.onclick = function(event) {
+                if (event.target == modal) {
+                    modal.style.display = "none";
+                }
+            };
     });
 };
 
