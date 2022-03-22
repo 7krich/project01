@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Le Festin</title>
+    <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
 
@@ -29,12 +30,16 @@
 
             <!-- CONTAINER FOR USER SELECTED RECIPE BUTTON -->
             <div id="user-selected">
-                <button id="tell-us-button">Tell Us What You Want</button>
+                <nav>
+                    <a href="#user-input">What Are You in the Mood For?</a>
+                </nav>
             </div>
 
             <!-- CONTAINER FOR RANDOM SELECTED RECIPE BUTTON -->
             <div id="random-selection">
-                <button id="random-button">I Don't Know. Help Me!</button>
+                <nav>
+                    <a href="#random-directions">I Don't Know. Inspire Me!</a>
+                </nav>
             </div>
         </div>
 
@@ -52,6 +57,7 @@
         <form id="user-input">
             <label for="food-selection">Mexican, American, FRENCH, etc...</label>
             <input type="text" id="food-selection">
+            <button>Voila</button>
         </form>
 
         <!-- CONTAINER FOR BOTH RECIPE AND SONG -->
