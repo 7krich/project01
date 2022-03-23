@@ -535,7 +535,6 @@ function displaySavedRecipe (data) {
         // CLEAR OLD DATA UPON NEW SEARCH
         dishNameHistEl.innerHTML = "";
         ingredientTitleHistEl.innerHTML = "";
-        ingredientListHistEl.innerHTML = "";
         instructionsHistEl.innerHTML = "";
         // APPEND DISH NAME
         dishNameHistEl.append(data.meals[0].strMeal);
@@ -544,76 +543,49 @@ function displaySavedRecipe (data) {
         // APPEND INGREDIENTS & PAIR WITH MEASUREMENT
 
         let ingredientItem = [
-            data.meals[0].strIngredient1, data.meals[0].strIngredient2, data.meals[0].strIngredient3, data.meals[0].strIngredient4, data.meals[0].strIngredient5,data.meals[0].strIngredient6, data.meals[0].strIngredient7, data.meals[0].strIngredient8, data.meals[0].strIngredient9, data.meals[0].strIngredient10, data.meals[0].strIngredient11, data.meals[0].strIngredient12, data.meals[0].strIngredient13, data.meals[0].strIngredient14, data.meals[0].strIngredient15, data.meals[0].strIngredient16, data.meals[0].strIngredient17, data.meals[0].strIngredient18, data.meals[0].strIngredient19, data.meals[0].strIngredient20
-        ]
 
-        let ingredientMeasure = [
-            data.meals[0].strMeasure1, data.meals[0].strMeasure2, data.meals[0].strMeasure3, data.meals[0].strMeasure4, data.meals[0].strMeasure5, data.meals[0].strMeasure6, data.meals[0].strMeasure7, data.meals[0].strMeasure8, data.meals[0].strMeasure9, data.meals[0].strMeasure10, data.meals[0].strMeasure11, data.meals[0].strMeasure12, data.meals[0].strMeasure13, data.meals[0].strMeasure14, data.meals[0].strMeasure15, data.meals[0].strMeasure16, data.meals[0].strMeasure17, data.meals[0].strMeasure18, data.meals[0].strMeasure19, data.meals[0].strMeasure20,
-        ]
+            [data.meals[0].strIngredient1, data.meals[0].strMeasure1],
+            [data.meals[0].strIngredient2, data.meals[0].strMeasure2],
+            [data.meals[0].strIngredient3, data.meals[0].strMeasure3],
+            [data.meals[0].strIngredient4, data.meals[0].strMeasure4],
+            [data.meals[0].strIngredient5, data.meals[0].strMeasure5],
+            [data.meals[0].strIngredient6, data.meals[0].strMeasure6],
+            [data.meals[0].strIngredient7, data.meals[0].strMeasure7],
+            [data.meals[0].strIngredient8, data.meals[0].strMeasure8],
+            [data.meals[0].strIngredient9, data.meals[0].strMeasure9],
+            [data.meals[0].strIngredient10, data.meals[0].strMeasure10],
+            [data.meals[0].strIngredient11, data.meals[0].strMeasure11],
+            [data.meals[0].strIngredient12, data.meals[0].strMeasure12],
+            [data.meals[0].strIngredient13, data.meals[0].strMeasure13],
+            [data.meals[0].strIngredient14, data.meals[0].strMeasure14],
+            [data.meals[0].strIngredient15, data.meals[0].strMeasure15],
+            [data.meals[0].strIngredient16, data.meals[0].strMeasure16],
+            [data.meals[0].strIngredient17, data.meals[0].strMeasure17],
+            [data.meals[0].strIngredient18, data.meals[0].strMeasure18],
+            [data.meals[0].strIngredient19, data.meals[0].strMeasure19],
+            [data.meals[0].strIngredient20, data.meals[0].strMeasure20]
+
+        ];
+        
 
             for (var i = 0; i <= ingredientItem.length; i++) {
 
                 if (ingredientItem[i]) {
 
-                    let li = document.createElement("li");
-                    li.innerText = ingredientItem[i];
-                    document.body.appendChild(li);
+                    if (ingredientItem[0, [i]] == "," || ingredientItem[0, [i]] == ", " || ingredientItem[0, [i]] == null) {
+                        return ""
+                    } else {
+                        let li = document.createElement("li");
+                        li.innerText = ingredientItem[0, [i]];
+                        document.body.appendChild(li);
+                    
+                    }
                 }
+
+
+                
             };
 
-        // if (ingredientMeasure !== null || ingredientMeasure !== "") {
-
-        //     for (var i = 0; i < ingredientMeasure.length; i++) {
-
-        //         let li = document.createElement("li");
-        //         li.innerText = ingredientMeasure[i];
-        //         document.body.appendChild(li);
-        //     };
-
-        // } else {
-        //     li.innerText = ""
-        // }
-
-        // ingredientListHistEl.append(data.meals[0].strIngredient1);
-        // ingredientListHistEl.append(data.meals[0].strMeasure1);
-        // ingredientListHistEl.append(data.meals[0].strIngredient2);
-        // ingredientListHistEl.append(data.meals[0].strMeasure2);
-        // ingredientListHistEl.append(data.meals[0].strIngredient3);
-        // ingredientListHistEl.append(data.meals[0].strMeasure3);
-        // ingredientListHistEl.append(data.meals[0].strIngredient4);
-        // ingredientListHistEl.append(data.meals[0].strMeasure4);
-        // ingredientListHistEl.append(data.meals[0].strIngredient5);
-        // ingredientListHistEl.append(data.meals[0].strMeasure5);
-        // ingredientListHistEl.append(data.meals[0].strIngredient6);
-        // ingredientListHistEl.append(data.meals[0].strMeasure6);
-        // ingredientListHistEl.append(data.meals[0].strIngredient7);
-        // ingredientListHistEl.append(data.meals[0].strMeasure7);
-        // ingredientListHistEl.append(data.meals[0].strIngredient8);
-        // ingredientListHistEl.append(data.meals[0].strMeasure8);
-        // ingredientListHistEl.append(data.meals[0].strIngredient9);
-        // ingredientListHistEl.append(data.meals[0].strMeasure9);
-        // ingredientListHistEl.append(data.meals[0].strIngredient10);
-        // ingredientListHistEl.append(data.meals[0].strMeasure10);
-        // ingredientListHistEl.append(data.meals[0].strIngredient11);
-        // ingredientListHistEl.append(data.meals[0].strMeasure11);
-        // ingredientListHistEl.append(data.meals[0].strIngredient12);
-        // ingredientListHistEl.append(data.meals[0].strMeasure12);
-        // ingredientListHistEl.append(data.meals[0].strIngredient13);
-        // ingredientListHistEl.append(data.meals[0].strMeasure13);
-        // ingredientListHistEl.append(data.meals[0].strIngredient14);
-        // ingredientListHistEl.append(data.meals[0].strMeasure14);
-        // ingredientListHistEl.append(data.meals[0].strIngredient15);
-        // ingredientListHistEl.append(data.meals[0].strMeasure15);
-        // ingredientListHistEl.append(data.meals[0].strIngredient16);
-        // ingredientListHistEl.append(data.meals[0].strMeasure16);
-        // ingredientListHistEl.append(data.meals[0].strIngredient17);
-        // ingredientListHistEl.append(data.meals[0].strMeasure17);
-        // ingredientListHistEl.append(data.meals[0].strIngredient18);
-        // ingredientListHistEl.append(data.meals[0].strMeasure18);
-        // ingredientListHistEl.append(data.meals[0].strIngredient19);
-        // ingredientListHistEl.append(data.meals[0].strMeasure19);
-        // ingredientListHistEl.append(data.meals[0].strIngredient20);
-        // ingredientListHistEl.append(data.meals[0].strMeasure20);
         // APPEND DIRECTIONS
         instructionsHistEl.append(data.meals[0].strInstructions);
     }
