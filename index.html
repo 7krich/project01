@@ -5,24 +5,25 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Le Festin</title>
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+
 </head>
 <body>
 
     <!-- DIV CONTAINING TITLE ON THE PAGE -->
     <div id="title-container">
-        <h1>Le Festin</h1>
-        <p>Le Festin isn't just a recipe generator, it's a whole mood. It's the complete experience of pairing
+        <h1 class="is-size-1 has-text-weight-bold has-text-centered py-6">Le Festin</h1>
+        <p class="is-size-5 py-4 px-4 mx-4">Le Festin isn't just a recipe generator, it's a whole mood. It's the complete experience of pairing
             a dinner recipe with a curated song list to match eardrums to paletes. We're not just the answer to dinner, 
             we're an entire experience.</p>
     </div>
 
     <!-- 1ST MAIN SECTION HOLDING THE 1ST SET OF USER OPTION BUTTONS -->
-    <div class="section-container">
+    <div class="section-container container">
 
         <!-- DESCRIPTION FOR USER DIV -->
         <div id="user-directions">
-            <p>Choose an option below:</p>
+            <p class="is-size-4">Choose an option below:</p>
         </div>
 
         <!-- DIV TO HOLD BOTH BUTTONS IN 1ST SECTION -->
@@ -40,7 +41,10 @@
                 <nav>
                     <a href="#random-directions">I Don't Know. Inspire Me!</a>
                 </nav>
-            </div>
+           
+
+            <!-- CONTAINER FOR RANDOM SELECTED RECIPE BUTTON -->
+            
         </div>
 
     </div>
@@ -50,21 +54,39 @@
 
         <!-- DESCRIPTION FOR CHOOSE FOOD TYPE RECIPE & SONG -->
         <div id="tell-us-directions">
-            <p>Tell us what you're feeling:</p>
+            <p class="is-size-4">Tell us what you're feeling:</p>
         </div>
         
         <!-- USER INPUT FOR FOOD TYPE SELECTION -->
-        <form id="user-input">
+        <form class="is-size-6" id="user-input">
             <label for="food-selection">Mexican, American, FRENCH, etc...</label>
             <input type="text" id="food-selection">
-            <button id="submit-selection">Voila</button>
+            <button id="submit-selection">Chercer</button>
         </form>
+        <form id="user-input-container">
+
+            <input name="user-input" id="search" type="text" autofocus="true" class="form-input" />
+
+        </form>
+
 
         <!-- CONTAINER FOR BOTH RECIPE AND SONG -->
         <div id="user-selected-results">
 
             <!-- USER SELECTED RANDOM RECIPE RESULT GOES HERE -->
             <div id="recipe-selected">
+
+                <div id="dish-name-1">
+                </div>
+
+                <div id="ingredient-title-1">
+                </div>
+
+                <ol id="ingredient-list-1">
+                </ol>
+
+                <div id="instructions-1">
+                </div>
 
             </div>
 
@@ -82,8 +104,13 @@
 
         <!-- DESCRIPTION FOR RANDOM FOOD TYPE RECIPE & SONG -->
         <div id="random-directions">
-            <p>Don't know what you want? We'll pick for you!</p>
-            <button>Feeling Lucky?</button>
+            <p class="is-size-4">Don't know what you want? We'll pick for you!</p>
+        </div>
+
+        <div id="random-container">
+
+        <button type="button" id="random-button">Pick for me</button>
+
         </div>
 
         <!-- CONTAINER FOR BOTH RECIPE AND SONG -->
@@ -91,6 +118,22 @@
 
             <!-- RANDOMLY SELECTED RANDOM RECIPE RESULT GOES HERE -->
             <div id="recipe-random">
+
+                <div id="random-recipe-selected">
+
+                    <div id="dish-name-2">
+                    </div>
+    
+                    <div id="ingredient-title-2">
+                    </div>
+    
+                    <ol id="ingredient-list-2">
+                    </ol>
+    
+                    <div id="instructions-2">
+                    </div>
+    
+                </div>
 
             </div>
 
@@ -103,11 +146,27 @@
 
     </div>
 
+    <!-- 4TH MAIN SECTION HOLDING SEARCH HISTORY -->
+    <div class="section-container">
+
+        <div id="history-section">
+
+            <h2 class-is-size4>Search History</h2>
+
+            <button id="clear-history" class="btn" onclick ="clearSearch()">Clear History</button>
+
+            <div id="search-history-results">
+
+            </div>
+        </div>
+
+    </div> 
+
     <!-- FOOTER -->
     <footer>
         
     </footer>
     
-    <script src="/assets/js/script.js"></script>
+    <script src="./assets/js/script.js"></script>
 </body>
 </html>
