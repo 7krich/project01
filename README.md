@@ -7,7 +7,7 @@ A website that provides users access to random recipies either via cuisine searc
 * HTML
 * CSS
 * JAVASCRIPT
-
+* Bulma
 
 ## Website
 https://7krich.github.io/project01/
