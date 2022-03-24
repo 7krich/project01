@@ -473,7 +473,7 @@ function getSavedRecipe(savePickedMeal) {
             response.json()
             .then(function(data) {
                 //console.log(data);
-                    displaySavedRecipe(data);
+                displaySavedRecipe(data);
             });
             // response recieved but error with request
         } else {
@@ -536,20 +536,40 @@ function displaySavedRecipe (data) {
         dishNameHistEl.innerHTML = "";
         ingredientTitleHistEl.innerHTML = "";
         instructionsHistEl.innerHTML = "";
+        ingredientListHistEl.innerHTML = "";
         // APPEND DISH NAME
         dishNameHistEl.append(data.meals[0].strMeal);
         // APPEND INGREDIENTS TITLE
         ingredientTitleHistEl.append("Ingredients: ");
+
         // APPEND INGREDIENTS & PAIR WITH MEASUREMENT
-        let ing = data.meals[0]
+
+        let ingredients = [];
+        let measurements = [];
+
+        let ing = data.meals[0];
+        
             for (const key in ing) {
-            if (key.includes('strIngredient') && ing[key]) {
-                console.log(`${key}: ${ing[key]}`);
-                    let li = document.createElement("li");
-                    li.innerText = (`${ing[key]}`);
-                    document.body.appendChild(li);
-                }
+                if (ing[key] && ing[key] !== " ") {
+                    if (key.includes('strIngredient')) {
+                        ingredients.push(ing[key])
+                    };
+
+                    if (key.includes('strMeasure')) {
+                        measurements.push(ing[key])
+                    };
+                };
             };
+
+            for (var i = 0; i < ingredients.length; i++) {
+                let li = document.createElement("li");
+                li.innerText = (`${ingredients[i]}: ${measurements[i]}`);
+                ingredientListHistEl.appendChild(li);
+            };
+
+            console.log(measurements)
+            console.log(ingredients)
+
         // APPEND DIRECTIONS
         instructionsHistEl.append(data.meals[0].strInstructions);
     }
