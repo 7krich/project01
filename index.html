@@ -11,37 +11,47 @@
 <body>
 
     <!-- DIV CONTAINING TITLE ON THE PAGE -->
-    <div id="title-container">
-        <h1 class="is-size-1 has-text-weight-bold has-text-centered py-6">Le Festin</h1>
-        <p class="is-size-5 py-4 px-4 mx-4">Le Festin isn't just a recipe generator, it's a whole mood. It's the complete experience of pairing
+    <div id="title-container" class="hero is-info">
+        <h1 class="is-size-1 has-text-weight-bold has-text-centered py-4">Le Festin</h1>
+        <p class="is-size-5 py-4 px-4 mx-4 has-text-centered">Le Festin isn't just a recipe generator, it's a whole mood. It's the complete experience of pairing
             a dinner recipe with a curated song list to match eardrums to paletes. We're not just the answer to dinner, 
             we're an entire experience.</p>
     </div>
 
     <!-- 1ST MAIN SECTION HOLDING THE 1ST SET OF USER OPTION BUTTONS -->
-    <div class="section-container container">
+    <div class="section-container">
 
         <!-- DESCRIPTION FOR USER DIV -->
+    
         <div id="user-directions">
-            <p class="is-size-4">Choose an option below:</p>
+            <p class="is-size-4 has-text-centered py-4">Choose an option below:</p>
         </div>
 
         <!-- DIV TO HOLD BOTH BUTTONS IN 1ST SECTION -->
-        <div class=container>
-
+        <div class="container columns py-6 my-6">
+    
             <!-- CONTAINER FOR USER SELECTED RECIPE BUTTON -->
-            <div id="user-selected" class="choose-or-random">
-                <nav>
-                    <a href="#user-input">What Are You in the Mood For?</a>
-                </nav>
+            <div class="container">
+
+                <div id="user-selected" class="choose-or-random has-text-centered column">
+                    <figure class="image is-128x128 is-inline-block">
+                        <img src="assets/images/image1.jpg" alt="Placeholder image" class="modal-button" data-target="modal-image1">
+                      </figure>
+                    <nav>
+                        <a href="#user-input">What Are You in the Mood For?</a>
+                    </nav>
+                </div>
             </div>
 
             <!-- CONTAINER FOR RANDOM SELECTED RECIPE BUTTON -->
-            <div id="random-selection" class="choose-or-random">
+            <div id="random-selection" class="choose-or-random has-text-centered column">
+                <figure class="image is-128x128 is-inline-block">
+                    <img src="assets/images/image2.jpg" alt="Placeholder image" class="modal-button" data-target="modal-image2">
+                  </figure>
                 <nav>
                     <a href="#random-directions">I Don't Know. Inspire Me!</a>
                 </nav>
-           
+    </div>       
 
             <!-- CONTAINER FOR RANDOM SELECTED RECIPE BUTTON -->
             
