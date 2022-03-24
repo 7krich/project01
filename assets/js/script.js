@@ -199,46 +199,33 @@ function displayUserRecipe (idMeal) {
         // APPEND INGREDIENTS TITLE
         ingredientTitleEl.append("Ingredients: ");
         // APPEND INGREDIENTS & PAIR WITH MEASUREMENT
-        ingredientListEl.append(idMeal.meals[0].strIngredient1);
-        ingredientListEl.append(idMeal.meals[0].strMeasure1);
-        ingredientListEl.append(idMeal.meals[0].strIngredient2);
-        ingredientListEl.append(idMeal.meals[0].strMeasure2);
-        ingredientListEl.append(idMeal.meals[0].strIngredient3);
-        ingredientListEl.append(idMeal.meals[0].strMeasure3);
-        ingredientListEl.append(idMeal.meals[0].strIngredient4);
-        ingredientListEl.append(idMeal.meals[0].strMeasure4);
-        ingredientListEl.append(idMeal.meals[0].strIngredient5);
-        ingredientListEl.append(idMeal.meals[0].strMeasure5);
-        ingredientListEl.append(idMeal.meals[0].strIngredient6);
-        ingredientListEl.append(idMeal.meals[0].strMeasure6);
-        ingredientListEl.append(idMeal.meals[0].strIngredient7);
-        ingredientListEl.append(idMeal.meals[0].strMeasure7);
-        ingredientListEl.append(idMeal.meals[0].strIngredient8);
-        ingredientListEl.append(idMeal.meals[0].strMeasure8);
-        ingredientListEl.append(idMeal.meals[0].strIngredient9);
-        ingredientListEl.append(idMeal.meals[0].strMeasure9);
-        ingredientListEl.append(idMeal.meals[0].strIngredient10);
-        ingredientListEl.append(idMeal.meals[0].strMeasure10);
-        ingredientListEl.append(idMeal.meals[0].strIngredient11);
-        ingredientListEl.append(idMeal.meals[0].strMeasure11);
-        ingredientListEl.append(idMeal.meals[0].strIngredient12);
-        ingredientListEl.append(idMeal.meals[0].strMeasure12);
-        ingredientListEl.append(idMeal.meals[0].strIngredient13);
-        ingredientListEl.append(idMeal.meals[0].strMeasure13);
-        ingredientListEl.append(idMeal.meals[0].strIngredient14);
-        ingredientListEl.append(idMeal.meals[0].strMeasure14);
-        ingredientListEl.append(idMeal.meals[0].strIngredient15);
-        ingredientListEl.append(idMeal.meals[0].strMeasure15);
-        ingredientListEl.append(idMeal.meals[0].strIngredient16);
-        ingredientListEl.append(idMeal.meals[0].strMeasure16);
-        ingredientListEl.append(idMeal.meals[0].strIngredient17);
-        ingredientListEl.append(idMeal.meals[0].strMeasure17);
-        ingredientListEl.append(idMeal.meals[0].strIngredient18);
-        ingredientListEl.append(idMeal.meals[0].strMeasure18);
-        ingredientListEl.append(idMeal.meals[0].strIngredient19);
-        ingredientListEl.append(idMeal.meals[0].strMeasure19);
-        ingredientListEl.append(idMeal.meals[0].strIngredient20);
-        ingredientListEl.append(idMeal.meals[0].strMeasure20);
+        // APPEND INGREDIENTS & PAIR WITH MEASUREMENT
+
+        let ingredients = [];
+        let measurements = [];
+
+        let ing = idMeal.meals[0];
+        
+            for (const key in ing) {
+                if (ing[key] && ing[key] !== " ") {
+                    if (key.includes('strIngredient')) {
+                        ingredients.push(ing[key])
+                    };
+
+                    if (key.includes('strMeasure')) {
+                        measurements.push(ing[key])
+                    };
+                };
+            };
+
+            for (var i = 0; i < ingredients.length; i++) {
+                let li = document.createElement("li");
+                li.innerText = (`${ingredients[i]}: ${measurements[i]}`);
+                ingredientListEl.appendChild(li);
+            };
+
+            console.log(measurements);
+            console.log(ingredients);
         // APPEND DIRECTIONS
         instructionsEl.append(idMeal.meals[0].strInstructions);
     }
@@ -337,46 +324,33 @@ function displayRandomRecipe (data) {
         // APPEND INGREDIENTS TITLE
         ingredientTitleTwoEl.append("Ingredients: ");
         // APPEND INGREDIENTS & PAIR WITH MEASUREMENT
-        ingredientListTwoEl.append(data.meals[0].strIngredient1);
-        ingredientListTwoEl.append(data.meals[0].strMeasure1);
-        ingredientListTwoEl.append(data.meals[0].strIngredient2);
-        ingredientListTwoEl.append(data.meals[0].strMeasure2);
-        ingredientListTwoEl.append(data.meals[0].strIngredient3);
-        ingredientListTwoEl.append(data.meals[0].strMeasure3);
-        ingredientListTwoEl.append(data.meals[0].strIngredient4);
-        ingredientListTwoEl.append(data.meals[0].strMeasure4);
-        ingredientListTwoEl.append(data.meals[0].strIngredient5);
-        ingredientListTwoEl.append(data.meals[0].strMeasure5);
-        ingredientListTwoEl.append(data.meals[0].strIngredient6);
-        ingredientListTwoEl.append(data.meals[0].strMeasure6);
-        ingredientListTwoEl.append(data.meals[0].strIngredient7);
-        ingredientListTwoEl.append(data.meals[0].strMeasure7);
-        ingredientListTwoEl.append(data.meals[0].strIngredient8);
-        ingredientListTwoEl.append(data.meals[0].strMeasure8);
-        ingredientListTwoEl.append(data.meals[0].strIngredient9);
-        ingredientListTwoEl.append(data.meals[0].strMeasure9);
-        ingredientListTwoEl.append(data.meals[0].strIngredient10);
-        ingredientListTwoEl.append(data.meals[0].strMeasure10);
-        ingredientListTwoEl.append(data.meals[0].strIngredient11);
-        ingredientListTwoEl.append(data.meals[0].strMeasure11);
-        ingredientListTwoEl.append(data.meals[0].strIngredient12);
-        ingredientListTwoEl.append(data.meals[0].strMeasure12);
-        ingredientListTwoEl.append(data.meals[0].strIngredient13);
-        ingredientListTwoEl.append(data.meals[0].strMeasure13);
-        ingredientListTwoEl.append(data.meals[0].strIngredient14);
-        ingredientListTwoEl.append(data.meals[0].strMeasure14);
-        ingredientListTwoEl.append(data.meals[0].strIngredient15);
-        ingredientListTwoEl.append(data.meals[0].strMeasure15);
-        ingredientListTwoEl.append(data.meals[0].strIngredient16);
-        ingredientListTwoEl.append(data.meals[0].strMeasure16);
-        ingredientListTwoEl.append(data.meals[0].strIngredient17);
-        ingredientListTwoEl.append(data.meals[0].strMeasure17);
-        ingredientListTwoEl.append(data.meals[0].strIngredient18);
-        ingredientListTwoEl.append(data.meals[0].strMeasure18);
-        ingredientListTwoEl.append(data.meals[0].strIngredient19);
-        ingredientListTwoEl.append(data.meals[0].strMeasure19);
-        ingredientListTwoEl.append(data.meals[0].strIngredient20);
-        ingredientListTwoEl.append(data.meals[0].strMeasure20);
+        // APPEND INGREDIENTS & PAIR WITH MEASUREMENT
+
+        let ingredients = [];
+        let measurements = [];
+
+        let ing = data.meals[0];
+        
+            for (const key in ing) {
+                if (ing[key] && ing[key] !== " ") {
+                    if (key.includes('strIngredient')) {
+                        ingredients.push(ing[key])
+                    };
+
+                    if (key.includes('strMeasure')) {
+                        measurements.push(ing[key])
+                    };
+                };
+            };
+
+            for (var i = 0; i < ingredients.length; i++) {
+                let li = document.createElement("li");
+                li.innerText = (`${ingredients[i]}: ${measurements[i]}`);
+                ingredientListTwoEl.appendChild(li);
+            };
+
+            console.log(measurements);
+            console.log(ingredients);
         // APPEND DIRECTIONS
         instructionsTwoEl.append(data.meals[0].strInstructions);
     }
@@ -567,8 +541,8 @@ function displaySavedRecipe (data) {
                 ingredientListHistEl.appendChild(li);
             };
 
-            console.log(measurements)
-            console.log(ingredients)
+            console.log(measurements);
+            console.log(ingredients);
 
         // APPEND DIRECTIONS
         instructionsHistEl.append(data.meals[0].strInstructions);
