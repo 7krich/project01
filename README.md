@@ -12,6 +12,6 @@ A website that provides users access to random recipies either via cuisine searc
 ## Website
 https://7krich.github.io/project01/
 
-##Screenshots
+## Screenshots
 ![ScreenShot](./assets/images/Screenshot.png)
 
