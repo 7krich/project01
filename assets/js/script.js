@@ -198,34 +198,42 @@ function displayUserRecipe (idMeal) {
         dishNameEl.append(idMeal.meals[0].strMeal);
         // APPEND INGREDIENTS TITLE
         ingredientTitleEl.append("Ingredients: ");
-        // APPEND INGREDIENTS & PAIR WITH MEASUREMENT
-        // APPEND INGREDIENTS & PAIR WITH MEASUREMENT
 
+        // APPEND INGREDIENTS & PAIR WITH MEASUREMENT
+        // empty arrays for data objects
         let ingredients = [];
         let measurements = [];
 
+        // turn data object into variable
         let ing = idMeal.meals[0];
         
+            // loop through data object recieved
             for (const key in ing) {
+                // if the object/variable key is detected & not empty
                 if (ing[key] && ing[key] !== " ") {
+                    // and the data includes strIngredient
                     if (key.includes('strIngredient')) {
+                        // push the ingredient data to the new array
                         ingredients.push(ing[key])
                     };
 
+                    // and the data incldues strMeasure
                     if (key.includes('strMeasure')) {
+                        // push the measurement data to the new array
                         measurements.push(ing[key])
                     };
                 };
             };
 
+            // loop through ingredient/measurement array created above
             for (var i = 0; i < ingredients.length; i++) {
+
+                // append ingredients & measurement on to the page
                 let li = document.createElement("li");
                 li.innerText = (`${ingredients[i]}: ${measurements[i]}`);
                 ingredientListEl.appendChild(li);
             };
 
-            console.log(measurements);
-            console.log(ingredients);
         // APPEND DIRECTIONS
         instructionsEl.append(idMeal.meals[0].strInstructions);
     }
@@ -323,14 +331,14 @@ function displayRandomRecipe (data) {
         dishNameTwoEl.append(data.meals[0].strMeal);
         // APPEND INGREDIENTS TITLE
         ingredientTitleTwoEl.append("Ingredients: ");
-        // APPEND INGREDIENTS & PAIR WITH MEASUREMENT
-        // APPEND INGREDIENTS & PAIR WITH MEASUREMENT
 
+        // APPEND INGREDIENTS & PAIR WITH MEASUREMENT
         let ingredients = [];
         let measurements = [];
 
         let ing = data.meals[0];
         
+            // same description as above display function, but with data input
             for (const key in ing) {
                 if (ing[key] && ing[key] !== " ") {
                     if (key.includes('strIngredient')) {
@@ -344,13 +352,12 @@ function displayRandomRecipe (data) {
             };
 
             for (var i = 0; i < ingredients.length; i++) {
+                // append reults to random ingredient list
                 let li = document.createElement("li");
                 li.innerText = (`${ingredients[i]}: ${measurements[i]}`);
                 ingredientListTwoEl.appendChild(li);
             };
 
-            console.log(measurements);
-            console.log(ingredients);
         // APPEND DIRECTIONS
         instructionsTwoEl.append(data.meals[0].strInstructions);
     }
@@ -517,12 +524,12 @@ function displaySavedRecipe (data) {
         ingredientTitleHistEl.append("Ingredients: ");
 
         // APPEND INGREDIENTS & PAIR WITH MEASUREMENT
-
         let ingredients = [];
         let measurements = [];
 
         let ing = data.meals[0];
         
+        // same description as above display function, but with data input
             for (const key in ing) {
                 if (ing[key] && ing[key] !== " ") {
                     if (key.includes('strIngredient')) {
@@ -536,13 +543,12 @@ function displaySavedRecipe (data) {
             };
 
             for (var i = 0; i < ingredients.length; i++) {
+
+                // append new li element to history
                 let li = document.createElement("li");
                 li.innerText = (`${ingredients[i]}: ${measurements[i]}`);
                 ingredientListHistEl.appendChild(li);
             };
-
-            console.log(measurements);
-            console.log(ingredients);
 
         // APPEND DIRECTIONS
         instructionsHistEl.append(data.meals[0].strInstructions);
