@@ -390,26 +390,6 @@ function addToSearchHistory (savePickedMeal) {
         //and add the button so it can be access later
         historyEl.insertAdjacentHTML("afterbegin", `<button class="hist-button" id="${savePickedMeal}" onclick = "handleHistoryClick(event)">${savePickedMeal}</button>`);
     }
-
-};
-
-// SEARCH HISTORY FUNCTIONS & LOCAL STORAGE
-function addToSearchHistory (savePickedMeal) {
-
-    //console.log(savePickedMeal);
-
-    if (!searchHistory) {
-        searchHistory = [];
-    }
-
-    if (!searchHistory.includes(savePickedMeal)) {
-
-        searchHistory.push(savePickedMeal);
-        localStorage.setItem("search", JSON.stringify(searchHistory));
-
-
-        historyEl.insertAdjacentHTML("afterbegin", `<button id="${savePickedMeal}" onclick = "handleHistoryClick(event)">${savePickedMeal}</button>`)
-    }
 };
 
 // LOOP THROUGH SEARCH HISTORY TO PULL HISTORY ITEM UPON CLICK
