@@ -62,3 +62,7 @@
   transition-duration: 2s;
 }
 
+#search {
+  padding: 14px 30px 14px 14px;
+  border-radius: 4px;
+}
